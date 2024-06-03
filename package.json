@@ -1,0 +1,31 @@
+{
+  "name": "adminpet",
+  "version": "1.0.0",
+  "description": "Proyecto de servicios SENA",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fraile05/adminpet.git"
+  },
+  "keywords": [
+    "sena",
+    "mascotas",
+    "petshops",
+    "animales",
+    "veterinaria"
+  ],
+  "author": "Jose Leonardo Fraile Camargo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Fraile05/adminpet/issues"
+  },
+  "homepage": "https://github.com/Fraile05/adminpet#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.4.1",
+    "nodemon": "^3.1.3"
+  }
+}

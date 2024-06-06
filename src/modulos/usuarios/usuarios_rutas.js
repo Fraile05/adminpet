@@ -15,4 +15,14 @@ usuariosRouter.get("/", function(require, response){
     respuestas.exitosa(require,response,todosUsuarios,200);
 });
 
+usuariosRouter.get("/registro", function(require, response){
+
+    response.render("registro")
+});
+
+usuariosRouter.get("/login", function(require, response){
+
+    response.render("login")
+});
+
 module.exports = usuariosRouter;

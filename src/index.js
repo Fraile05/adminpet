@@ -1,5 +1,6 @@
 // Importación de modulos
 const app = require("./app");
+const conexionBase = require("./basesdedatos/mongo"); 
 
 // Puesta arriba del servidor
 app.listen(app.get("puerto"), function(error){
@@ -11,4 +12,5 @@ app.listen(app.get("puerto"), function(error){
         console.log("Servidor iniciado correctamente en el puerto: ", app.get("puerto"));
     }
 });
+
 

@@ -14,17 +14,6 @@ function ConexionMongoDb(){
 
 ConexionMongoDb();
 
-// Logica para el CRUD en mongo
-const prueba = {
-    id : 1,
-    nombre : "Leonardo",
-    edad : 10
-};
-
-function TodosUsuarios(tabla){
-    return prueba
-};
-
 module.exports = {
-    TodosUsuarios
-}
+    ConexionMongoDb
+};

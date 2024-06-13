@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/Fraile05/adminpet#readme",
   "dependencies": {
+    "body-parser": "^1.20.2",
     "bootstrap": "^5.3.3",
     "dotenv": "^16.4.5",
     "ejs": "^3.1.10",

@@ -2,7 +2,7 @@
 const mongoose = require("mongoose");
 
 //Importacion de modulos
-const dbConfig = require("../config");
+const dbConfig = require("../../config");
 
 // Conexion a la base de datos
 function ConexionMongoDb(){

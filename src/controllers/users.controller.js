@@ -1,18 +1,16 @@
-// Importacion de dependencias
-const express = require("express");
-
 // Importacion de modulos
-const Usuario = require("../../models/usuario");
+const Usuario = require("../models/usuario");
 
-// Definicion de rutas usuarios
-const usuariosRouter = express.Router();
-
-usuariosRouter.get("/registro", function(req, res){
-
+// Logica
+const getRegister = (req, res) => {
     res.render("registro")
-});
+};
 
-usuariosRouter.post("/registro", async (req, res) => {
+const getLogin = (req, res) => {
+    res.render("login")
+};
+
+const postUser = async (req, res) => {
     let numide = req.body.identificacion;
     const usuarioDB = await Usuario.findOne({ identificacion: numide});
 
@@ -28,9 +26,9 @@ usuariosRouter.post("/registro", async (req, res) => {
                 console.log(error);
             }
     }
-});
+};
 
-usuariosRouter.post("/iniciarsesion", async (req, res) => {
+const postLogin = async (req, res) => {
     let correologin = req.body.correologin;
     let contrasenalogin = req.body.contrasenalogin;
 
@@ -56,31 +54,31 @@ usuariosRouter.post("/iniciarsesion", async (req, res) => {
             console.log(error);
         }
     }
-});
+};
 
-usuariosRouter.get("/login", function(req, res){
-
-    res.render("login")
-});
-
-usuariosRouter.get("/registrofallido", function(req, res){
-
+const getRegisterFail = (req, res) => {
     res.render("registrofallido")
-});
+};
 
-usuariosRouter.get("/registrook", function(req, res){
-
+const getRegisterOk = (req, res) => {
     res.render("registrook")
-});
+};
 
-usuariosRouter.get("/loginfallido", function(req, res){
-
+const getLoginFail = (req, res) => {
     res.render("loginfallido")
-});
+};
 
-usuariosRouter.get("/loginok", function(req, res){
-
+const getLoginOk = (req, res) => {
     res.render("loginok")
-});
+};
 
-module.exports = usuariosRouter;
+module.exports = {
+    getRegister,
+    getLogin,
+    postUser,
+    postLogin,
+    getRegisterFail,
+    getRegisterOk,
+    getLoginFail,
+    getLoginOk
+};

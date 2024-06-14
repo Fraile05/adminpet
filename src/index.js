@@ -1,6 +1,6 @@
 // Importación de modulos
 const app = require("./app");
-const conexionBase = require("./basesdedatos/mongo"); 
+const conexionBase = require("./infraestructure/databases/mongodb"); 
 
 // Puesta arriba del servidor
 app.listen(app.get("puerto"), function(error){

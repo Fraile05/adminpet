@@ -30,6 +30,34 @@ usuariosRouter.post("/registro", async (req, res) => {
     }
 });
 
+usuariosRouter.post("/iniciarsesion", async (req, res) => {
+    let correologin = req.body.correologin;
+    let contrasenalogin = req.body.contrasenalogin;
+
+    const userDB = await Usuario.findOne({ correoelectronico: correologin});
+
+    if (!userDB) {
+        res.redirect("/usuarios/loginfallido");
+        console.log("El correo ingresado no existe en la base");  
+    } else {
+
+        try {
+            let correoOK = (correologin == userDB.correoelectronico);
+            let contrasenaOK = (contrasenalogin == userDB.contrasena);
+
+            if ((correoOK == true) && (contrasenaOK == true)) {
+                console.log("Las credenciales coinciden");
+                res.redirect("/usuarios/loginok");
+            } else {
+                console.log("Las credenciales no coinciden");
+                res.redirect("/usuarios/loginfallido");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+});
+
 usuariosRouter.get("/login", function(req, res){
 
     res.render("login")
@@ -43,6 +71,16 @@ usuariosRouter.get("/registrofallido", function(req, res){
 usuariosRouter.get("/registrook", function(req, res){
 
     res.render("registrook")
+});
+
+usuariosRouter.get("/loginfallido", function(req, res){
+
+    res.render("loginfallido")
+});
+
+usuariosRouter.get("/loginok", function(req, res){
+
+    res.render("loginok")
 });
 
 module.exports = usuariosRouter;

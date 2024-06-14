@@ -3,42 +3,18 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const usuarioSchema = new Schema({
-    tipodocumento: { 
-        type: String,
-        require: true
-    },
-    identificacion: { 
-        type: Number,
-        require: true
-    },
-    nombres: { 
-        type: String,
-        require: true
-    },
-    apellidos: { 
-        type: String,
-        require: true
-    },
-    correoelectronico: { 
-        type: String,
-        require: true
-    },
-    contrasena: { 
-        type: String,
-        require: true
-    },
-    direccion: { 
-        type: String,
-        require: true
-    },
-    ciudad: { 
-        type: String,
-        require: true
-    },
-    telefono: { 
-        type: Number,
-        require: true
-    }
+    tipodocumento: String,
+    identificacion: Number,
+    nombres: String,
+    apellidos: String,
+    correoelectronico: String,
+    contrasena: String,
+    direccion: String,
+    ciudad: String,
+    telefono: Number,
+}, {
+    timestamps: true,
+    versionKey: false  
 });
 
 // Crear modelo

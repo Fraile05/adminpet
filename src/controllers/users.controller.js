@@ -45,7 +45,9 @@ const postLogin = async (req, res) => {
 
             if ((correoOK == true) && (contrasenaOK == true)) {
                 console.log("Las credenciales coinciden");
-                res.redirect("/usuarios/loginok");
+                res.render("loginok",{
+                    userSignIn: userDB
+                });
             } else {
                 console.log("Las credenciales no coinciden");
                 res.redirect("/usuarios/loginfallido");
@@ -68,10 +70,6 @@ const getLoginFail = (req, res) => {
     res.render("loginfallido")
 };
 
-const getLoginOk = (req, res) => {
-    res.render("loginok")
-};
-
 module.exports = {
     getRegister,
     getLogin,
@@ -80,5 +78,4 @@ module.exports = {
     getRegisterFail,
     getRegisterOk,
     getLoginFail,
-    getLoginOk
 };

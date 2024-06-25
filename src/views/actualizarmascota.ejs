@@ -1,0 +1,101 @@
+<%- include("templates/cabecerasignin", {tituloweb: "Actualizar mascota"}) %>
+
+<div class="container my-4">
+    <h2>Ingresa los datos de tu mascota para actualizar</h1>
+        <% if (error) { %>
+            <p>
+            <%= mensaje %>
+            </p>
+            <a href="../../mismascotas" class="btn btn-dark btn-block">Volver a mis mascotas</a>
+        <% } %>
+
+        <% if (!error) { %>
+
+            <form id="formularioEditar" data-id="<%= mascota.id %>">
+                <input 
+                    type="text"
+                    value="<%= mascota.nombre %>"
+                    class="form-control my-2"
+                    name="nombre"
+                    id="nombreinput"
+                >
+                <input 
+                    type="text"
+                    value="<%= mascota.raza %>"
+                    class="form-control my-2"
+                    name="raza"
+                    id="razainput"
+                >
+                <input 
+                    type="number"
+                    value="<%= mascota.edad %>"
+                    class="form-control my-2"
+                    name="edad"
+                    id="edadinput"
+                >
+                <input 
+                    type="text"
+                    value="<%= mascota.genero %>"
+                    class="form-control my-2"
+                    name="genero"
+                    id="generoinput"
+                >
+                <input 
+                    type="text"
+                    value="<%= mascota.especie %>"
+                    class="form-control my-2"
+                    name="especie"
+                    id="especieinput"
+                >
+                <button
+                    class="btn btn-info btn btn-block"
+                    id="btnActualizar"
+                    type="submit"
+                    >
+                    Actualizar
+                </button>
+            </form>
+        <% } %>
+</div>
+
+<script>
+    const formularioEditar = document.querySelector("#formularioEditar")
+
+    formularioEditar.addEventListener('submit', async (e) => {
+        e.preventDefault()
+
+        const nombre = document.querySelector("#nombreinput").value
+        const raza = document.querySelector("#razainput").value
+        const edad = document.querySelector("#edadinput").value
+        const genero = document.querySelector("#generoinput").value
+        const especie = document.querySelector("#especieinput").value
+        const id = formularioEditar.dataset.id
+
+        console.log(nombre, raza, edad, genero, especie, id)
+
+        try {
+            const data = await fetch(`/home/mismascotas/actualizar/${id}`, {
+                method: "put",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({nombre, raza, edad, genero, especie})
+            })
+
+            const res = await data.json()
+            
+
+            if (res.estado) {
+                window.location.href = "/home/mismascotas"
+                console.log(res)
+            } else {
+                console.log(res)  
+            }
+
+        } catch (error) {
+            console.log(error)
+        }
+    })
+</script>
+
+<%- include("templates/footerhome") %>

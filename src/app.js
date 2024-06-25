@@ -7,7 +7,7 @@ const morgan = require("morgan");
 const config = require("./config");
 const usersRoutes = require("./routes/users.routes");
 const homeRoutes = require("./routes/home.routes");
-const pruebaRouter = require("./controllers/pruebas/mascotas");
+const userSignInRoutes = require("./routes/usersigin.routes");
 
 // Variables del entorno
 const app = express();
@@ -31,7 +31,7 @@ app.use(morgan('dev'));
 // Configuración de rutas
 app.use("/", homeRoutes);
 app.use("/usuarios", usersRoutes);
-app.use("/pruebas", pruebaRouter);
+app.use("/home", userSignInRoutes);
 
 // Exportación de modulos
 module.exports = app;
